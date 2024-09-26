@@ -24,5 +24,12 @@ class Library_Testing(unittest.TestCase):
             self.Library.borrow_book("978-93-5163-389-1")
         self.assertTrue('Book Not Available' in str(message.exception))
 
+    def test_return_book(self):
+        book = Book(isbn="978-93-5163-389-1",title="Data Structure Using C",author="Sharad Kumar Verma",publicationYear=2015)
+        self.Library.add_book(book)
+        self.Library.borrow_book("978-93-5163-389-1")
+        self.Library.return_book("978-93-5163-389-1")
+        self.assertTrue(book.available)
+
 if __name__ == '__main__':
     unittest.main()
